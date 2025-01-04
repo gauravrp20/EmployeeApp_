@@ -1,0 +1,56 @@
+@model IEnumerable<EmployeeApp.Models.EmployeeViewModel>
+
+
+<h1>Employee Management</h1>
+
+<form asp-action="Add" method="post">
+    <input type="number" name="EmployeeCode" placeholder="Employee Code" required />
+    <input type="text" name="EmployeeName" placeholder="Employee Name" required />
+    <input type="date" name="DateOfBirth" required />
+    <select name="Gender">
+        <option value="true">Male</option>
+        <option value="false">Female</option>
+    </select>
+    <input type="text" name="Department" placeholder="Department" required />
+    <input type="text" name="Designation" placeholder="Designation" required />
+    <input type="number" name="BasicSalary" placeholder="Basic Salary" step="0.01" required />
+    <button type="submit">Add Employee</button>
+</form>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Employee Code</th>
+            <th>Employee Name</th>
+            <th>Date of Birth</th>
+            <th>Gender</th>
+            <th>Department</th>
+            <th>Designation</th>
+            <th>Basic Salary</th>
+            <th>Dearness Allowance</th>
+            <th>Conveyance Allowance</th>
+            <th>House Rent Allowance</th>
+            <th>PT</th>
+            <th>Total Salary</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var emp in Model)
+        {
+            <tr>
+                <td>@emp.EmployeeCode</td>
+                <td>@emp.EmployeeName</td>
+                <td>@emp.DateOfBirth.ToShortDateString()</td>
+                <td>@emp.Gender</td>
+                <td>@emp.Department</td>
+                <td>@emp.Designation</td>
+                <td>@emp.BasicSalary</td>
+                <td>@emp.DearnessAllowance</td>
+                <td>@emp.ConveyanceAllowance</td>
+                <td>@emp.HouseRentAllowance</td>
+                <td>@emp.PT</td>
+                <td>@emp.TotalSalary</td>
+            </tr>
+        }
+    </tbody>
+</table>
